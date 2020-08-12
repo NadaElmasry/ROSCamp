@@ -1,0 +1,3 @@
+/home/samar/Desktop/cmakename/CMakeFiles/rebuild_cache.dir
+/home/samar/Desktop/cmakename/CMakeFiles/name.dir
+/home/samar/Desktop/cmakename/CMakeFiles/edit_cache.dir
