@@ -1,0 +1,2 @@
+
+-DCATKIN_DEVEL_PREFIX=/home/samar/Desktop/ROSCamp/Day3/nada_ws/devel -DCMAKE_INSTALL_PREFIX=/home/samar/Desktop/ROSCamp/Day3/nada_ws/install -G Unix Makefiles
