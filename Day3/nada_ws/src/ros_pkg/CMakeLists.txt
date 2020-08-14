@@ -121,6 +121,16 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
+# Declare a C++ executable 
+add_executable(name src/name.cpp)
+
+# Add cmake target dependencies of the executable
+# same as for the library above 
+add_dependencies(name ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+
+#specify libraries to link a library or executable target against
+target_link_libraries(name ${catkin_LIBRARIES})
+
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
 #   src/${PROJECT_NAME}/ros_pkg.cpp

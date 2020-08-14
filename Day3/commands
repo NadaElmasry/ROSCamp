@@ -1,0 +1,15 @@
+#Creating a ros package: 
+	catkin_create_pkg ros_pkg rospy roscpp sensor_msgs std_msgs
+
+#running name.py in terminal:
+	cd src/ros_pkg/src
+	chmod +x name.py
+	roscore (from another terminal)
+	rosrun ros_pkg name.py 
+
+#running name.cpp in terminal:
+after editing CMakeLists.txt file to be able to make executable file from name.cpp
+	cd Day3/nada_ws
+	catkin_make
+	roscore (from another terminal)
+	rosrun ros_pkg name

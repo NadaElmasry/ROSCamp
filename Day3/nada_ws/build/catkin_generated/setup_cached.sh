@@ -7,7 +7,4 @@
 # new environment variables
 
 # modified environment variables
-export CMAKE_PREFIX_PATH="/home/samar/Desktop/ROSCamp/Day3/nada_ws/devel:$CMAKE_PREFIX_PATH"
 export PWD='/home/samar/Desktop/ROSCamp/Day3/nada_ws/build'
-export ROSLISP_PACKAGE_DIRECTORIES='/home/samar/Desktop/ROSCamp/Day3/nada_ws/devel/share/common-lisp'
-export ROS_PACKAGE_PATH="/home/samar/Desktop/ROSCamp/Day3/nada_ws/src:$ROS_PACKAGE_PATH"
