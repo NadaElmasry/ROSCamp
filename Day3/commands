@@ -13,3 +13,13 @@ after editing CMakeLists.txt file to be able to make executable file from name.c
 	catkin_make
 	roscore (from another terminal)
 	rosrun ros_pkg name
+
+#cloning repo and running Day3/catkin_ws:
+	cd Day3/catkin_ws
+	catkin_make
+run into errors and fix them is CMakeLists.txt
+	source devel/setup.bash
+	roscore (from another terminal)
+	roslaunch my_robot world.launch 
+OR 
+	roslaunch my_robot robot_description.launch
