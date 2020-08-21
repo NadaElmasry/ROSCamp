@@ -1,0 +1,7 @@
+#include <iostream>
+#include <math.h>
+using namespace std;
+double f(double mu,double )sigma2,double x){
+double prob =(( 1/(sigma2*) 
+return prob;
+}

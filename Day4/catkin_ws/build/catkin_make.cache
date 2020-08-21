@@ -1,0 +1,2 @@
+ros_pkg
+-DCATKIN_DEVEL_PREFIX=/home/samar/Desktop/ROSCamp/Day4/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/samar/Desktop/ROSCamp/Day4/catkin_ws/install -G Unix Makefiles
