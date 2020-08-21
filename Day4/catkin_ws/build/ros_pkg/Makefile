@@ -76,6 +76,50 @@ CMAKE_BINARY_DIR = /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/local/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/local/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/local/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
+
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/local/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
+
 # Special rule for the target install/strip
 install/strip: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
@@ -100,17 +144,6 @@ install/local/fast: preinstall/fast
 	/usr/local/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local/fast
 
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/local/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-
-.PHONY : test/fast
-
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -121,39 +154,6 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
-
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-
-.PHONY : list_install_components/fast
-
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/local/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
-
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/local/bin/cmake -P cmake_install.cmake
-.PHONY : install
-
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/local/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -188,6 +188,36 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
+ros_pkg/CMakeFiles/publisher.dir/rule:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/publisher.dir/rule
+.PHONY : ros_pkg/CMakeFiles/publisher.dir/rule
+
+# Convenience name for target.
+publisher: ros_pkg/CMakeFiles/publisher.dir/rule
+
+.PHONY : publisher
+
+# fast build rule for target.
+publisher/fast:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/publisher.dir/build.make ros_pkg/CMakeFiles/publisher.dir/build
+.PHONY : publisher/fast
+
+# Convenience name for target.
+ros_pkg/CMakeFiles/ros_pkg_generate_messages_py.dir/rule:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/ros_pkg_generate_messages_py.dir/rule
+.PHONY : ros_pkg/CMakeFiles/ros_pkg_generate_messages_py.dir/rule
+
+# Convenience name for target.
+ros_pkg_generate_messages_py: ros_pkg/CMakeFiles/ros_pkg_generate_messages_py.dir/rule
+
+.PHONY : ros_pkg_generate_messages_py
+
+# fast build rule for target.
+ros_pkg_generate_messages_py/fast:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/ros_pkg_generate_messages_py.dir/build.make ros_pkg/CMakeFiles/ros_pkg_generate_messages_py.dir/build
+.PHONY : ros_pkg_generate_messages_py/fast
+
+# Convenience name for target.
 ros_pkg/CMakeFiles/subscriber.dir/rule:
 	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/subscriber.dir/rule
 .PHONY : ros_pkg/CMakeFiles/subscriber.dir/rule
@@ -203,349 +233,19 @@ subscriber/fast:
 .PHONY : subscriber/fast
 
 # Convenience name for target.
-ros_pkg/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule:
-	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
-.PHONY : ros_pkg/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
+ros_pkg/CMakeFiles/std_msgs_generate_messages_py.dir/rule:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/std_msgs_generate_messages_py.dir/rule
+.PHONY : ros_pkg/CMakeFiles/std_msgs_generate_messages_py.dir/rule
 
 # Convenience name for target.
-geometry_msgs_generate_messages_py: ros_pkg/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
+std_msgs_generate_messages_py: ros_pkg/CMakeFiles/std_msgs_generate_messages_py.dir/rule
 
-.PHONY : geometry_msgs_generate_messages_py
+.PHONY : std_msgs_generate_messages_py
 
 # fast build rule for target.
-geometry_msgs_generate_messages_py/fast:
-	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/geometry_msgs_generate_messages_py.dir/build.make ros_pkg/CMakeFiles/geometry_msgs_generate_messages_py.dir/build
-.PHONY : geometry_msgs_generate_messages_py/fast
-
-# Convenience name for target.
-ros_pkg/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule:
-	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
-.PHONY : ros_pkg/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-geometry_msgs_generate_messages_lisp: ros_pkg/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
-
-.PHONY : geometry_msgs_generate_messages_lisp
-
-# fast build rule for target.
-geometry_msgs_generate_messages_lisp/fast:
-	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build.make ros_pkg/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build
-.PHONY : geometry_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
-ros_pkg/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule:
-	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
-.PHONY : ros_pkg/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-geometry_msgs_generate_messages_cpp: ros_pkg/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
-
-.PHONY : geometry_msgs_generate_messages_cpp
-
-# fast build rule for target.
-geometry_msgs_generate_messages_cpp/fast:
-	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build.make ros_pkg/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build
-.PHONY : geometry_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
-ros_pkg/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule:
-	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
-.PHONY : ros_pkg/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-sensor_msgs_generate_messages_py: ros_pkg/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
-
-.PHONY : sensor_msgs_generate_messages_py
-
-# fast build rule for target.
-sensor_msgs_generate_messages_py/fast:
-	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make ros_pkg/CMakeFiles/sensor_msgs_generate_messages_py.dir/build
-.PHONY : sensor_msgs_generate_messages_py/fast
-
-# Convenience name for target.
-ros_pkg/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule:
-	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
-.PHONY : ros_pkg/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-sensor_msgs_generate_messages_nodejs: ros_pkg/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
-
-.PHONY : sensor_msgs_generate_messages_nodejs
-
-# fast build rule for target.
-sensor_msgs_generate_messages_nodejs/fast:
-	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build.make ros_pkg/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build
-.PHONY : sensor_msgs_generate_messages_nodejs/fast
-
-# Convenience name for target.
-ros_pkg/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule:
-	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
-.PHONY : ros_pkg/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-sensor_msgs_generate_messages_lisp: ros_pkg/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
-
-.PHONY : sensor_msgs_generate_messages_lisp
-
-# fast build rule for target.
-sensor_msgs_generate_messages_lisp/fast:
-	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make ros_pkg/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build
-.PHONY : sensor_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
-ros_pkg/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule:
-	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule
-.PHONY : ros_pkg/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-geometry_msgs_generate_messages_eus: ros_pkg/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule
-
-.PHONY : geometry_msgs_generate_messages_eus
-
-# fast build rule for target.
-geometry_msgs_generate_messages_eus/fast:
-	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build.make ros_pkg/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build
-.PHONY : geometry_msgs_generate_messages_eus/fast
-
-# Convenience name for target.
-ros_pkg/CMakeFiles/roscpp_generate_messages_py.dir/rule:
-	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/roscpp_generate_messages_py.dir/rule
-.PHONY : ros_pkg/CMakeFiles/roscpp_generate_messages_py.dir/rule
-
-# Convenience name for target.
-roscpp_generate_messages_py: ros_pkg/CMakeFiles/roscpp_generate_messages_py.dir/rule
-
-.PHONY : roscpp_generate_messages_py
-
-# fast build rule for target.
-roscpp_generate_messages_py/fast:
-	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/roscpp_generate_messages_py.dir/build.make ros_pkg/CMakeFiles/roscpp_generate_messages_py.dir/build
-.PHONY : roscpp_generate_messages_py/fast
-
-# Convenience name for target.
-ros_pkg/CMakeFiles/roscpp_generate_messages_eus.dir/rule:
-	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/roscpp_generate_messages_eus.dir/rule
-.PHONY : ros_pkg/CMakeFiles/roscpp_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-roscpp_generate_messages_eus: ros_pkg/CMakeFiles/roscpp_generate_messages_eus.dir/rule
-
-.PHONY : roscpp_generate_messages_eus
-
-# fast build rule for target.
-roscpp_generate_messages_eus/fast:
-	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/roscpp_generate_messages_eus.dir/build.make ros_pkg/CMakeFiles/roscpp_generate_messages_eus.dir/build
-.PHONY : roscpp_generate_messages_eus/fast
-
-# Convenience name for target.
-ros_pkg/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule:
-	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
-.PHONY : ros_pkg/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-geometry_msgs_generate_messages_nodejs: ros_pkg/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
-
-.PHONY : geometry_msgs_generate_messages_nodejs
-
-# fast build rule for target.
-geometry_msgs_generate_messages_nodejs/fast:
-	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build.make ros_pkg/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build
-.PHONY : geometry_msgs_generate_messages_nodejs/fast
-
-# Convenience name for target.
-ros_pkg/CMakeFiles/roscpp_generate_messages_lisp.dir/rule:
-	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
-.PHONY : ros_pkg/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-roscpp_generate_messages_lisp: ros_pkg/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
-
-.PHONY : roscpp_generate_messages_lisp
-
-# fast build rule for target.
-roscpp_generate_messages_lisp/fast:
-	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make ros_pkg/CMakeFiles/roscpp_generate_messages_lisp.dir/build
-.PHONY : roscpp_generate_messages_lisp/fast
-
-# Convenience name for target.
-ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule:
-	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
-.PHONY : ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-rosgraph_msgs_generate_messages_cpp: ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
-
-.PHONY : rosgraph_msgs_generate_messages_cpp
-
-# fast build rule for target.
-rosgraph_msgs_generate_messages_cpp/fast:
-	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
-.PHONY : rosgraph_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
-ros_pkg/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule:
-	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
-.PHONY : ros_pkg/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-sensor_msgs_generate_messages_eus: ros_pkg/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
-
-.PHONY : sensor_msgs_generate_messages_eus
-
-# fast build rule for target.
-sensor_msgs_generate_messages_eus/fast:
-	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build.make ros_pkg/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build
-.PHONY : sensor_msgs_generate_messages_eus/fast
-
-# Convenience name for target.
-ros_pkg/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule:
-	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
-.PHONY : ros_pkg/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-sensor_msgs_generate_messages_cpp: ros_pkg/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
-
-.PHONY : sensor_msgs_generate_messages_cpp
-
-# fast build rule for target.
-sensor_msgs_generate_messages_cpp/fast:
-	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make ros_pkg/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build
-.PHONY : sensor_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
-ros_pkg/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule:
-	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
-.PHONY : ros_pkg/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_lisp: ros_pkg/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
-
-.PHONY : std_msgs_generate_messages_lisp
-
-# fast build rule for target.
-std_msgs_generate_messages_lisp/fast:
-	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make ros_pkg/CMakeFiles/std_msgs_generate_messages_lisp.dir/build
-.PHONY : std_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
-ros_pkg/CMakeFiles/roscpp_generate_messages_cpp.dir/rule:
-	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
-.PHONY : ros_pkg/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-roscpp_generate_messages_cpp: ros_pkg/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
-
-.PHONY : roscpp_generate_messages_cpp
-
-# fast build rule for target.
-roscpp_generate_messages_cpp/fast:
-	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make ros_pkg/CMakeFiles/roscpp_generate_messages_cpp.dir/build
-.PHONY : roscpp_generate_messages_cpp/fast
-
-# Convenience name for target.
-ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule:
-	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
-.PHONY : ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-rosgraph_msgs_generate_messages_eus: ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
-
-.PHONY : rosgraph_msgs_generate_messages_eus
-
-# fast build rule for target.
-rosgraph_msgs_generate_messages_eus/fast:
-	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build.make ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build
-.PHONY : rosgraph_msgs_generate_messages_eus/fast
-
-# Convenience name for target.
-ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule:
-	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
-.PHONY : ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-rosgraph_msgs_generate_messages_lisp: ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
-
-.PHONY : rosgraph_msgs_generate_messages_lisp
-
-# fast build rule for target.
-rosgraph_msgs_generate_messages_lisp/fast:
-	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build
-.PHONY : rosgraph_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
-ros_pkg/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule:
-	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
-.PHONY : ros_pkg/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_cpp: ros_pkg/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
-
-.PHONY : std_msgs_generate_messages_cpp
-
-# fast build rule for target.
-std_msgs_generate_messages_cpp/fast:
-	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make ros_pkg/CMakeFiles/std_msgs_generate_messages_cpp.dir/build
-.PHONY : std_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
-ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule:
-	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
-.PHONY : ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-rosgraph_msgs_generate_messages_nodejs: ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
-
-.PHONY : rosgraph_msgs_generate_messages_nodejs
-
-# fast build rule for target.
-rosgraph_msgs_generate_messages_nodejs/fast:
-	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build.make ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build
-.PHONY : rosgraph_msgs_generate_messages_nodejs/fast
-
-# Convenience name for target.
-ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule:
-	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
-.PHONY : ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-rosgraph_msgs_generate_messages_py: ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
-
-.PHONY : rosgraph_msgs_generate_messages_py
-
-# fast build rule for target.
-rosgraph_msgs_generate_messages_py/fast:
-	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build
-.PHONY : rosgraph_msgs_generate_messages_py/fast
-
-# Convenience name for target.
-ros_pkg/CMakeFiles/std_msgs_generate_messages_eus.dir/rule:
-	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
-.PHONY : ros_pkg/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_eus: ros_pkg/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
-
-.PHONY : std_msgs_generate_messages_eus
-
-# fast build rule for target.
-std_msgs_generate_messages_eus/fast:
-	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make ros_pkg/CMakeFiles/std_msgs_generate_messages_eus.dir/build
-.PHONY : std_msgs_generate_messages_eus/fast
-
-# Convenience name for target.
-ros_pkg/CMakeFiles/publisher.dir/rule:
-	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/publisher.dir/rule
-.PHONY : ros_pkg/CMakeFiles/publisher.dir/rule
-
-# Convenience name for target.
-publisher: ros_pkg/CMakeFiles/publisher.dir/rule
-
-.PHONY : publisher
-
-# fast build rule for target.
-publisher/fast:
-	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/publisher.dir/build.make ros_pkg/CMakeFiles/publisher.dir/build
-.PHONY : publisher/fast
+std_msgs_generate_messages_py/fast:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/std_msgs_generate_messages_py.dir/build.make ros_pkg/CMakeFiles/std_msgs_generate_messages_py.dir/build
+.PHONY : std_msgs_generate_messages_py/fast
 
 # Convenience name for target.
 ros_pkg/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule:
@@ -563,6 +263,426 @@ std_msgs_generate_messages_nodejs/fast:
 .PHONY : std_msgs_generate_messages_nodejs/fast
 
 # Convenience name for target.
+ros_pkg/CMakeFiles/std_msgs_generate_messages_eus.dir/rule:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
+.PHONY : ros_pkg/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+std_msgs_generate_messages_eus: ros_pkg/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
+
+.PHONY : std_msgs_generate_messages_eus
+
+# fast build rule for target.
+std_msgs_generate_messages_eus/fast:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make ros_pkg/CMakeFiles/std_msgs_generate_messages_eus.dir/build
+.PHONY : std_msgs_generate_messages_eus/fast
+
+# Convenience name for target.
+ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
+.PHONY : ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
+
+# Convenience name for target.
+rosgraph_msgs_generate_messages_py: ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
+
+.PHONY : rosgraph_msgs_generate_messages_py
+
+# fast build rule for target.
+rosgraph_msgs_generate_messages_py/fast:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build
+.PHONY : rosgraph_msgs_generate_messages_py/fast
+
+# Convenience name for target.
+ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
+.PHONY : ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+rosgraph_msgs_generate_messages_nodejs: ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
+
+.PHONY : rosgraph_msgs_generate_messages_nodejs
+
+# fast build rule for target.
+rosgraph_msgs_generate_messages_nodejs/fast:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build.make ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build
+.PHONY : rosgraph_msgs_generate_messages_nodejs/fast
+
+# Convenience name for target.
+ros_pkg/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
+.PHONY : ros_pkg/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+std_msgs_generate_messages_cpp: ros_pkg/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
+
+.PHONY : std_msgs_generate_messages_cpp
+
+# fast build rule for target.
+std_msgs_generate_messages_cpp/fast:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make ros_pkg/CMakeFiles/std_msgs_generate_messages_cpp.dir/build
+.PHONY : std_msgs_generate_messages_cpp/fast
+
+# Convenience name for target.
+ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
+.PHONY : ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+rosgraph_msgs_generate_messages_eus: ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
+
+.PHONY : rosgraph_msgs_generate_messages_eus
+
+# fast build rule for target.
+rosgraph_msgs_generate_messages_eus/fast:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build.make ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build
+.PHONY : rosgraph_msgs_generate_messages_eus/fast
+
+# Convenience name for target.
+ros_pkg/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
+.PHONY : ros_pkg/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+sensor_msgs_generate_messages_cpp: ros_pkg/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
+
+.PHONY : sensor_msgs_generate_messages_cpp
+
+# fast build rule for target.
+sensor_msgs_generate_messages_cpp/fast:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make ros_pkg/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build
+.PHONY : sensor_msgs_generate_messages_cpp/fast
+
+# Convenience name for target.
+ros_pkg/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
+.PHONY : ros_pkg/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+sensor_msgs_generate_messages_eus: ros_pkg/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
+
+.PHONY : sensor_msgs_generate_messages_eus
+
+# fast build rule for target.
+sensor_msgs_generate_messages_eus/fast:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build.make ros_pkg/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build
+.PHONY : sensor_msgs_generate_messages_eus/fast
+
+# Convenience name for target.
+ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
+.PHONY : ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+rosgraph_msgs_generate_messages_cpp: ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
+
+.PHONY : rosgraph_msgs_generate_messages_cpp
+
+# fast build rule for target.
+rosgraph_msgs_generate_messages_cpp/fast:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
+.PHONY : rosgraph_msgs_generate_messages_cpp/fast
+
+# Convenience name for target.
+ros_pkg/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
+.PHONY : ros_pkg/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+geometry_msgs_generate_messages_nodejs: ros_pkg/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
+
+.PHONY : geometry_msgs_generate_messages_nodejs
+
+# fast build rule for target.
+geometry_msgs_generate_messages_nodejs/fast:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build.make ros_pkg/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build
+.PHONY : geometry_msgs_generate_messages_nodejs/fast
+
+# Convenience name for target.
+ros_pkg/CMakeFiles/roscpp_generate_messages_py.dir/rule:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/roscpp_generate_messages_py.dir/rule
+.PHONY : ros_pkg/CMakeFiles/roscpp_generate_messages_py.dir/rule
+
+# Convenience name for target.
+roscpp_generate_messages_py: ros_pkg/CMakeFiles/roscpp_generate_messages_py.dir/rule
+
+.PHONY : roscpp_generate_messages_py
+
+# fast build rule for target.
+roscpp_generate_messages_py/fast:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/roscpp_generate_messages_py.dir/build.make ros_pkg/CMakeFiles/roscpp_generate_messages_py.dir/build
+.PHONY : roscpp_generate_messages_py/fast
+
+# Convenience name for target.
+ros_pkg/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
+.PHONY : ros_pkg/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+sensor_msgs_generate_messages_lisp: ros_pkg/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
+
+.PHONY : sensor_msgs_generate_messages_lisp
+
+# fast build rule for target.
+sensor_msgs_generate_messages_lisp/fast:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make ros_pkg/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build
+.PHONY : sensor_msgs_generate_messages_lisp/fast
+
+# Convenience name for target.
+ros_pkg/CMakeFiles/roscpp_generate_messages_cpp.dir/rule:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
+.PHONY : ros_pkg/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+roscpp_generate_messages_cpp: ros_pkg/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
+
+.PHONY : roscpp_generate_messages_cpp
+
+# fast build rule for target.
+roscpp_generate_messages_cpp/fast:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make ros_pkg/CMakeFiles/roscpp_generate_messages_cpp.dir/build
+.PHONY : roscpp_generate_messages_cpp/fast
+
+# Convenience name for target.
+ros_pkg/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
+.PHONY : ros_pkg/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+sensor_msgs_generate_messages_nodejs: ros_pkg/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
+
+.PHONY : sensor_msgs_generate_messages_nodejs
+
+# fast build rule for target.
+sensor_msgs_generate_messages_nodejs/fast:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build.make ros_pkg/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build
+.PHONY : sensor_msgs_generate_messages_nodejs/fast
+
+# Convenience name for target.
+ros_pkg/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
+.PHONY : ros_pkg/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
+
+# Convenience name for target.
+sensor_msgs_generate_messages_py: ros_pkg/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
+
+.PHONY : sensor_msgs_generate_messages_py
+
+# fast build rule for target.
+sensor_msgs_generate_messages_py/fast:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make ros_pkg/CMakeFiles/sensor_msgs_generate_messages_py.dir/build
+.PHONY : sensor_msgs_generate_messages_py/fast
+
+# Convenience name for target.
+ros_pkg/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
+.PHONY : ros_pkg/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+geometry_msgs_generate_messages_cpp: ros_pkg/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
+
+.PHONY : geometry_msgs_generate_messages_cpp
+
+# fast build rule for target.
+geometry_msgs_generate_messages_cpp/fast:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build.make ros_pkg/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build
+.PHONY : geometry_msgs_generate_messages_cpp/fast
+
+# Convenience name for target.
+ros_pkg/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
+.PHONY : ros_pkg/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+geometry_msgs_generate_messages_lisp: ros_pkg/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
+
+.PHONY : geometry_msgs_generate_messages_lisp
+
+# fast build rule for target.
+geometry_msgs_generate_messages_lisp/fast:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build.make ros_pkg/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build
+.PHONY : geometry_msgs_generate_messages_lisp/fast
+
+# Convenience name for target.
+ros_pkg/CMakeFiles/roscpp_generate_messages_lisp.dir/rule:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
+.PHONY : ros_pkg/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+roscpp_generate_messages_lisp: ros_pkg/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
+
+.PHONY : roscpp_generate_messages_lisp
+
+# fast build rule for target.
+roscpp_generate_messages_lisp/fast:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make ros_pkg/CMakeFiles/roscpp_generate_messages_lisp.dir/build
+.PHONY : roscpp_generate_messages_lisp/fast
+
+# Convenience name for target.
+ros_pkg/CMakeFiles/ros_pkg_generate_messages_lisp.dir/rule:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/ros_pkg_generate_messages_lisp.dir/rule
+.PHONY : ros_pkg/CMakeFiles/ros_pkg_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+ros_pkg_generate_messages_lisp: ros_pkg/CMakeFiles/ros_pkg_generate_messages_lisp.dir/rule
+
+.PHONY : ros_pkg_generate_messages_lisp
+
+# fast build rule for target.
+ros_pkg_generate_messages_lisp/fast:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/ros_pkg_generate_messages_lisp.dir/build.make ros_pkg/CMakeFiles/ros_pkg_generate_messages_lisp.dir/build
+.PHONY : ros_pkg_generate_messages_lisp/fast
+
+# Convenience name for target.
+ros_pkg/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
+.PHONY : ros_pkg/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
+
+# Convenience name for target.
+geometry_msgs_generate_messages_py: ros_pkg/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
+
+.PHONY : geometry_msgs_generate_messages_py
+
+# fast build rule for target.
+geometry_msgs_generate_messages_py/fast:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/geometry_msgs_generate_messages_py.dir/build.make ros_pkg/CMakeFiles/geometry_msgs_generate_messages_py.dir/build
+.PHONY : geometry_msgs_generate_messages_py/fast
+
+# Convenience name for target.
+ros_pkg/CMakeFiles/ros_pkg_generate_messages_cpp.dir/rule:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/ros_pkg_generate_messages_cpp.dir/rule
+.PHONY : ros_pkg/CMakeFiles/ros_pkg_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+ros_pkg_generate_messages_cpp: ros_pkg/CMakeFiles/ros_pkg_generate_messages_cpp.dir/rule
+
+.PHONY : ros_pkg_generate_messages_cpp
+
+# fast build rule for target.
+ros_pkg_generate_messages_cpp/fast:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/ros_pkg_generate_messages_cpp.dir/build.make ros_pkg/CMakeFiles/ros_pkg_generate_messages_cpp.dir/build
+.PHONY : ros_pkg_generate_messages_cpp/fast
+
+# Convenience name for target.
+ros_pkg/CMakeFiles/ros_pkg_generate_messages.dir/rule:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/ros_pkg_generate_messages.dir/rule
+.PHONY : ros_pkg/CMakeFiles/ros_pkg_generate_messages.dir/rule
+
+# Convenience name for target.
+ros_pkg_generate_messages: ros_pkg/CMakeFiles/ros_pkg_generate_messages.dir/rule
+
+.PHONY : ros_pkg_generate_messages
+
+# fast build rule for target.
+ros_pkg_generate_messages/fast:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/ros_pkg_generate_messages.dir/build.make ros_pkg/CMakeFiles/ros_pkg_generate_messages.dir/build
+.PHONY : ros_pkg_generate_messages/fast
+
+# Convenience name for target.
+ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
+.PHONY : ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+rosgraph_msgs_generate_messages_lisp: ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
+
+.PHONY : rosgraph_msgs_generate_messages_lisp
+
+# fast build rule for target.
+rosgraph_msgs_generate_messages_lisp/fast:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make ros_pkg/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build
+.PHONY : rosgraph_msgs_generate_messages_lisp/fast
+
+# Convenience name for target.
+ros_pkg/CMakeFiles/_ros_pkg_generate_messages_check_deps_complexnumbers.dir/rule:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/_ros_pkg_generate_messages_check_deps_complexnumbers.dir/rule
+.PHONY : ros_pkg/CMakeFiles/_ros_pkg_generate_messages_check_deps_complexnumbers.dir/rule
+
+# Convenience name for target.
+_ros_pkg_generate_messages_check_deps_complexnumbers: ros_pkg/CMakeFiles/_ros_pkg_generate_messages_check_deps_complexnumbers.dir/rule
+
+.PHONY : _ros_pkg_generate_messages_check_deps_complexnumbers
+
+# fast build rule for target.
+_ros_pkg_generate_messages_check_deps_complexnumbers/fast:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/_ros_pkg_generate_messages_check_deps_complexnumbers.dir/build.make ros_pkg/CMakeFiles/_ros_pkg_generate_messages_check_deps_complexnumbers.dir/build
+.PHONY : _ros_pkg_generate_messages_check_deps_complexnumbers/fast
+
+# Convenience name for target.
+ros_pkg/CMakeFiles/ros_pkg_genpy.dir/rule:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/ros_pkg_genpy.dir/rule
+.PHONY : ros_pkg/CMakeFiles/ros_pkg_genpy.dir/rule
+
+# Convenience name for target.
+ros_pkg_genpy: ros_pkg/CMakeFiles/ros_pkg_genpy.dir/rule
+
+.PHONY : ros_pkg_genpy
+
+# fast build rule for target.
+ros_pkg_genpy/fast:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/ros_pkg_genpy.dir/build.make ros_pkg/CMakeFiles/ros_pkg_genpy.dir/build
+.PHONY : ros_pkg_genpy/fast
+
+# Convenience name for target.
+ros_pkg/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
+.PHONY : ros_pkg/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+std_msgs_generate_messages_lisp: ros_pkg/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
+
+.PHONY : std_msgs_generate_messages_lisp
+
+# fast build rule for target.
+std_msgs_generate_messages_lisp/fast:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make ros_pkg/CMakeFiles/std_msgs_generate_messages_lisp.dir/build
+.PHONY : std_msgs_generate_messages_lisp/fast
+
+# Convenience name for target.
+ros_pkg/CMakeFiles/_ros_pkg_generate_messages_check_deps_count.dir/rule:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/_ros_pkg_generate_messages_check_deps_count.dir/rule
+.PHONY : ros_pkg/CMakeFiles/_ros_pkg_generate_messages_check_deps_count.dir/rule
+
+# Convenience name for target.
+_ros_pkg_generate_messages_check_deps_count: ros_pkg/CMakeFiles/_ros_pkg_generate_messages_check_deps_count.dir/rule
+
+.PHONY : _ros_pkg_generate_messages_check_deps_count
+
+# fast build rule for target.
+_ros_pkg_generate_messages_check_deps_count/fast:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/_ros_pkg_generate_messages_check_deps_count.dir/build.make ros_pkg/CMakeFiles/_ros_pkg_generate_messages_check_deps_count.dir/build
+.PHONY : _ros_pkg_generate_messages_check_deps_count/fast
+
+# Convenience name for target.
+ros_pkg/CMakeFiles/ros_pkg_gencpp.dir/rule:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/ros_pkg_gencpp.dir/rule
+.PHONY : ros_pkg/CMakeFiles/ros_pkg_gencpp.dir/rule
+
+# Convenience name for target.
+ros_pkg_gencpp: ros_pkg/CMakeFiles/ros_pkg_gencpp.dir/rule
+
+.PHONY : ros_pkg_gencpp
+
+# fast build rule for target.
+ros_pkg_gencpp/fast:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/ros_pkg_gencpp.dir/build.make ros_pkg/CMakeFiles/ros_pkg_gencpp.dir/build
+.PHONY : ros_pkg_gencpp/fast
+
+# Convenience name for target.
+ros_pkg/CMakeFiles/ros_pkg_generate_messages_eus.dir/rule:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/ros_pkg_generate_messages_eus.dir/rule
+.PHONY : ros_pkg/CMakeFiles/ros_pkg_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+ros_pkg_generate_messages_eus: ros_pkg/CMakeFiles/ros_pkg_generate_messages_eus.dir/rule
+
+.PHONY : ros_pkg_generate_messages_eus
+
+# fast build rule for target.
+ros_pkg_generate_messages_eus/fast:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/ros_pkg_generate_messages_eus.dir/build.make ros_pkg/CMakeFiles/ros_pkg_generate_messages_eus.dir/build
+.PHONY : ros_pkg_generate_messages_eus/fast
+
+# Convenience name for target.
 ros_pkg/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule:
 	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
 .PHONY : ros_pkg/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
@@ -578,19 +698,94 @@ roscpp_generate_messages_nodejs/fast:
 .PHONY : roscpp_generate_messages_nodejs/fast
 
 # Convenience name for target.
-ros_pkg/CMakeFiles/std_msgs_generate_messages_py.dir/rule:
-	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/std_msgs_generate_messages_py.dir/rule
-.PHONY : ros_pkg/CMakeFiles/std_msgs_generate_messages_py.dir/rule
+ros_pkg/CMakeFiles/roscpp_generate_messages_eus.dir/rule:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/roscpp_generate_messages_eus.dir/rule
+.PHONY : ros_pkg/CMakeFiles/roscpp_generate_messages_eus.dir/rule
 
 # Convenience name for target.
-std_msgs_generate_messages_py: ros_pkg/CMakeFiles/std_msgs_generate_messages_py.dir/rule
+roscpp_generate_messages_eus: ros_pkg/CMakeFiles/roscpp_generate_messages_eus.dir/rule
 
-.PHONY : std_msgs_generate_messages_py
+.PHONY : roscpp_generate_messages_eus
 
 # fast build rule for target.
-std_msgs_generate_messages_py/fast:
-	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/std_msgs_generate_messages_py.dir/build.make ros_pkg/CMakeFiles/std_msgs_generate_messages_py.dir/build
-.PHONY : std_msgs_generate_messages_py/fast
+roscpp_generate_messages_eus/fast:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/roscpp_generate_messages_eus.dir/build.make ros_pkg/CMakeFiles/roscpp_generate_messages_eus.dir/build
+.PHONY : roscpp_generate_messages_eus/fast
+
+# Convenience name for target.
+ros_pkg/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule
+.PHONY : ros_pkg/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+geometry_msgs_generate_messages_eus: ros_pkg/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule
+
+.PHONY : geometry_msgs_generate_messages_eus
+
+# fast build rule for target.
+geometry_msgs_generate_messages_eus/fast:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build.make ros_pkg/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build
+.PHONY : geometry_msgs_generate_messages_eus/fast
+
+# Convenience name for target.
+ros_pkg/CMakeFiles/ros_pkg_genlisp.dir/rule:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/ros_pkg_genlisp.dir/rule
+.PHONY : ros_pkg/CMakeFiles/ros_pkg_genlisp.dir/rule
+
+# Convenience name for target.
+ros_pkg_genlisp: ros_pkg/CMakeFiles/ros_pkg_genlisp.dir/rule
+
+.PHONY : ros_pkg_genlisp
+
+# fast build rule for target.
+ros_pkg_genlisp/fast:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/ros_pkg_genlisp.dir/build.make ros_pkg/CMakeFiles/ros_pkg_genlisp.dir/build
+.PHONY : ros_pkg_genlisp/fast
+
+# Convenience name for target.
+ros_pkg/CMakeFiles/ros_pkg_geneus.dir/rule:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/ros_pkg_geneus.dir/rule
+.PHONY : ros_pkg/CMakeFiles/ros_pkg_geneus.dir/rule
+
+# Convenience name for target.
+ros_pkg_geneus: ros_pkg/CMakeFiles/ros_pkg_geneus.dir/rule
+
+.PHONY : ros_pkg_geneus
+
+# fast build rule for target.
+ros_pkg_geneus/fast:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/ros_pkg_geneus.dir/build.make ros_pkg/CMakeFiles/ros_pkg_geneus.dir/build
+.PHONY : ros_pkg_geneus/fast
+
+# Convenience name for target.
+ros_pkg/CMakeFiles/ros_pkg_generate_messages_nodejs.dir/rule:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/ros_pkg_generate_messages_nodejs.dir/rule
+.PHONY : ros_pkg/CMakeFiles/ros_pkg_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+ros_pkg_generate_messages_nodejs: ros_pkg/CMakeFiles/ros_pkg_generate_messages_nodejs.dir/rule
+
+.PHONY : ros_pkg_generate_messages_nodejs
+
+# fast build rule for target.
+ros_pkg_generate_messages_nodejs/fast:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/ros_pkg_generate_messages_nodejs.dir/build.make ros_pkg/CMakeFiles/ros_pkg_generate_messages_nodejs.dir/build
+.PHONY : ros_pkg_generate_messages_nodejs/fast
+
+# Convenience name for target.
+ros_pkg/CMakeFiles/ros_pkg_gennodejs.dir/rule:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ros_pkg/CMakeFiles/ros_pkg_gennodejs.dir/rule
+.PHONY : ros_pkg/CMakeFiles/ros_pkg_gennodejs.dir/rule
+
+# Convenience name for target.
+ros_pkg_gennodejs: ros_pkg/CMakeFiles/ros_pkg_gennodejs.dir/rule
+
+.PHONY : ros_pkg_gennodejs
+
+# fast build rule for target.
+ros_pkg_gennodejs/fast:
+	cd /home/samar/Desktop/ROSCamp/Day4/catkin_ws/build && $(MAKE) $(MAKESILENT) -f ros_pkg/CMakeFiles/ros_pkg_gennodejs.dir/build.make ros_pkg/CMakeFiles/ros_pkg_gennodejs.dir/build
+.PHONY : ros_pkg_gennodejs/fast
 
 src/publisher.o: src/publisher.cpp.o
 
@@ -659,11 +854,24 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... test"
+	@echo "... _ros_pkg_generate_messages_check_deps_complexnumbers"
+	@echo "... _ros_pkg_generate_messages_check_deps_count"
 	@echo "... geometry_msgs_generate_messages_cpp"
 	@echo "... geometry_msgs_generate_messages_eus"
 	@echo "... geometry_msgs_generate_messages_lisp"
 	@echo "... geometry_msgs_generate_messages_nodejs"
 	@echo "... geometry_msgs_generate_messages_py"
+	@echo "... ros_pkg_gencpp"
+	@echo "... ros_pkg_generate_messages"
+	@echo "... ros_pkg_generate_messages_cpp"
+	@echo "... ros_pkg_generate_messages_eus"
+	@echo "... ros_pkg_generate_messages_lisp"
+	@echo "... ros_pkg_generate_messages_nodejs"
+	@echo "... ros_pkg_generate_messages_py"
+	@echo "... ros_pkg_geneus"
+	@echo "... ros_pkg_genlisp"
+	@echo "... ros_pkg_gennodejs"
+	@echo "... ros_pkg_genpy"
 	@echo "... roscpp_generate_messages_cpp"
 	@echo "... roscpp_generate_messages_eus"
 	@echo "... roscpp_generate_messages_lisp"
